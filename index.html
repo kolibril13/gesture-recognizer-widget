@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gesture Recognizer Studio</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div id="app">
+      <header class="app-header">
+        <h1>Gesture Recognizer Studio</h1>
+        <div class="status" id="status">
+          <span class="status-dot" id="status-dot"></span>
+          <span id="status-text">Initializing…</span>
+        </div>
+      </header>
+
+      <main class="app-main">
+        <!-- LEFT PANEL: video + canvas overlay -->
+        <section class="panel panel-video" aria-label="Video preview">
+          <div class="video-wrapper" id="video-wrapper">
+            <video id="webcam" autoplay playsinline muted></video>
+            <canvas id="overlay"></canvas>
+            <div class="video-overlay-message" id="video-message">
+              <p>Camera is off</p>
+            </div>
+          </div>
+
+          <div class="controls">
+            <button id="toggle-camera" class="btn btn-primary" disabled>
+              Start Camera
+            </button>
+
+            <label class="control">
+              <span>Camera</span>
+              <select id="camera-select" disabled></select>
+            </label>
+
+            <label class="control control-checkbox">
+              <input type="checkbox" id="mirror-toggle" checked />
+              <span>Mirror</span>
+            </label>
+          </div>
+        </section>
+
+        <!-- RIGHT PANEL: live detection data -->
+        <aside class="panel panel-data" aria-label="Detection data">
+          <h2>Live Detection</h2>
+
+          <div class="detection-list" id="detection-list">
+            <p class="empty-state">No hands detected.</p>
+          </div>
+
+          <details class="json-panel">
+            <summary>Raw JSON output</summary>
+            <pre id="raw-json">{}</pre>
+          </details>
+
+          <section class="ws-panel">
+            <h3>WebSocket Streaming</h3>
+            <label class="control">
+              <span>URL</span>
+              <input
+                type="text"
+                id="ws-url"
+                value="ws://localhost:8080"
+                placeholder="ws://localhost:8080"
+              />
+            </label>
+            <label class="control control-checkbox">
+              <input type="checkbox" id="ws-autoreconnect" />
+              <span>Auto-reconnect</span>
+            </label>
+            <div class="ws-actions">
+              <button id="ws-toggle" class="btn btn-secondary">Connect</button>
+              <span class="ws-status" id="ws-status">Disconnected</span>
+            </div>
+          </section>
+        </aside>
+      </main>
+
+      <!-- BOTTOM PANEL: performance metrics -->
+      <footer class="panel panel-metrics" aria-label="Performance metrics">
+        <div class="metric">
+          <span class="metric-label">FPS</span>
+          <span class="metric-value" id="metric-fps">0</span>
+        </div>
+        <div class="metric">
+          <span class="metric-label">Inference</span>
+          <span class="metric-value" id="metric-inference">0 ms</span>
+        </div>
+        <div class="metric">
+          <span class="metric-label">Avg Inference</span>
+          <span class="metric-value" id="metric-avg-inference">0 ms</span>
+        </div>
+        <div class="metric">
+          <span class="metric-label">Hands</span>
+          <span class="metric-value" id="metric-hands">0</span>
+        </div>
+      </footer>
+
+      <div class="error-banner" id="error-banner" hidden>
+        <span id="error-text"></span>
+        <button id="error-dismiss" aria-label="Dismiss error">&times;</button>
+      </div>
+    </div>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

@@ -1,0 +1,141 @@
+.grw {
+  --grw-bg: #0d1117;
+  --grw-border: #2a313c;
+  --grw-text: #e6edf3;
+  --grw-dim: #9aa7b4;
+  --grw-accent: #2f81f7;
+  --grw-danger: #f85149;
+  --grw-success: #3fb950;
+  --grw-warning: #d29922;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color: var(--grw-text);
+  background: var(--grw-bg);
+  border: 1px solid var(--grw-border);
+  border-radius: 10px;
+  padding: 12px;
+  max-width: 720px;
+  box-sizing: border-box;
+}
+
+.grw *,
+.grw *::before,
+.grw *::after {
+  box-sizing: border-box;
+}
+
+.grw-stage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #000;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.grw-video,
+.grw-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.grw-canvas {
+  pointer-events: none;
+}
+
+.grw-msg {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--grw-dim);
+  background: rgba(0, 0, 0, 0.4);
+  font-size: 0.95rem;
+}
+
+.grw-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+
+.grw-btn {
+  border: none;
+  border-radius: 6px;
+  padding: 8px 14px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  color: #fff;
+  background: var(--grw-accent);
+}
+
+.grw-btn:hover {
+  filter: brightness(1.1);
+}
+
+.grw-btn-danger {
+  background: var(--grw-danger);
+}
+
+.grw-select {
+  background: #1c2430;
+  color: var(--grw-text);
+  border: 1px solid var(--grw-border);
+  border-radius: 6px;
+  padding: 6px 9px;
+  font-size: 0.8rem;
+  max-width: 200px;
+}
+
+.grw-select:disabled {
+  opacity: 0.5;
+}
+
+.grw-check {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  color: var(--grw-dim);
+}
+
+.grw-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  color: var(--grw-dim);
+}
+
+.grw-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--grw-dim);
+}
+
+.grw-status[data-state="loading"] .grw-dot {
+  background: var(--grw-warning);
+}
+.grw-status[data-state="ready"] .grw-dot {
+  background: var(--grw-accent);
+}
+.grw-status[data-state="streaming"] .grw-dot {
+  background: var(--grw-success);
+}
+.grw-status[data-state="error"] .grw-dot {
+  background: var(--grw-danger);
+}
+
+.grw-readout {
+  font-size: 0.8rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  margin-left: auto;
+}

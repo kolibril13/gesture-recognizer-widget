@@ -23,6 +23,8 @@ import pathlib
 import anywidget
 import traitlets as t
 
+__version__ = "0.1.0"
+
 _HERE = pathlib.Path(__file__).parent
 _STATIC = _HERE / "static"
 

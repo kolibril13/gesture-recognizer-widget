@@ -75,10 +75,13 @@ src/
   landmarks.ts           # canonical 21 hand-landmark names
   widget.ts              # anywidget front-end entry (bundled separately)
 src_widget/
-  gesture_widget.py      # the anywidget.AnyWidget subclass + traitlets
-  static/
-    widget.js            # built bundle (npm run build:widget)
-    widget.css           # widget styles
+  README.md              # PyPI long description for the Python package
+  gesture_widget/
+    __init__.py          # the anywidget.AnyWidget subclass + traitlets
+    static/
+      widget.js          # built bundle (npm run build:widget)
+      widget.css         # widget styles
+pyproject.toml           # Python packaging (PyPI: gesture-recognizer-widget)
 index.html
 styles.css
 vite.config.ts           # standalone app build
@@ -90,32 +93,35 @@ eslint.config.js
 ## JupyterLab widget (anywidget)
 
 The same recognizer is also packaged as an [anywidget](https://anywidget.dev)
-so you can read live hand-landmark positions directly in Python.
+so you can read live hand-landmark positions directly in Python. It is published
+on PyPI as **`gesture-recognizer-widget`** (see
+[`src_widget/README.md`](src_widget/README.md) for the package docs).
 
-### Build the widget bundle
-
-```bash
-npm install
-npm run build:widget   # bundles src/widget.ts -> src_widget/static/widget.js
-```
-
-### Install the Python deps
+### Install from PyPI
 
 ```bash
-pip install anywidget traitlets
-# JupyterLab (if you don't already have it):
-pip install jupyterlab
+pip install gesture-recognizer-widget
 ```
 
 ### Use it in a notebook
 
 ```python
-import sys; sys.path.insert(0, "src_widget")   # or pip-install the package
 from gesture_widget import GestureRecognizerWidget
 
 w = GestureRecognizerWidget()
 w                       # display the cell, then click "Start Camera"
 ```
+
+### Development version (run against your local checkout)
+
+```bash
+npm install
+npm run build:widget    # bundles src/widget.ts -> src_widget/gesture_widget/static/widget.js
+pip install -e .        # editable install of the local package
+```
+
+In an embedded interpreter such as Blender's bundled Python, point its `pip` at
+the repo: `subprocess.check_call([sys.executable, "-m", "pip", "install", "-e", "/path/to/caputre_motion"])`.
 
 ```python
 # Read individual finger / hand-landmark positions ([x, y, z], normalized 0..1):

@@ -6,7 +6,7 @@ import { defineConfig } from "vite";
  */
 export default defineConfig({
   build: {
-    outDir: "src_widget/static",
+    outDir: "src_widget/gesture_widget/static",
     emptyOutDir: false,
     sourcemap: false,
     lib: {

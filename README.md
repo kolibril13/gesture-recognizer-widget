@@ -1,5 +1,9 @@
 # Gesture Recognizer Studio
 
+<video src="hand.mp4" controls width="100%"></video>
+
+[![PyPI](https://img.shields.io/pypi/v/gesture-recognizer-widget)](https://pypi.org/project/gesture-recognizer-widget/)
+
 A from-scratch clone of the **MediaPipe Studio Gesture Recognizer** demo, built
 with modern TypeScript + Vite and the official
 [`@mediapipe/tasks-vision`](https://www.npmjs.com/package/@mediapipe/tasks-vision)

@@ -1,6 +1,6 @@
 # Gesture Recognizer Studio
 
-<video src="hand.mp4" controls width="100%"></video>
+<video src="https://github.com/kolibril13/gesture-recognizer-widget/raw/main/hand.mp4" controls width="100%"></video>
 
 [![PyPI](https://img.shields.io/pypi/v/gesture-recognizer-widget)](https://pypi.org/project/gesture-recognizer-widget/)
 
